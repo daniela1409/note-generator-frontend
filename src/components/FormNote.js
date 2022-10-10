@@ -1,24 +1,23 @@
-import { findByDisplayValue } from "@testing-library/react";
-import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { redirect, useLocation } from "react-router-dom";
 import noteServices from "../services/noteServices";
 import {useNavigate} from 'react-router-dom';
 
-const Note = () => {
-  const {id} = useParams(); 
 
-    const location = useLocation();
-    const labCase = location.state.labCase;
-    const note = location.state.note;
-    const navigate = useNavigate();
+const FormNote = () => {
 
+  const location = useLocation();
+  const labCase = location.state.labCase;
+  const navigate = useNavigate();
+      
+  
   const [state, setState] = useState({
     note: "",
     lab_case_id: ""
   });
+  
 
   const handleChange = (e) => {
-    console.log(note.note);
     const value = e.target.value;
     setState({
       ...state,
@@ -32,10 +31,13 @@ const Note = () => {
       note: state.note,
       lab_case_id: labCase.id
     };
-    noteServices.editNote(noteData, id).then((response) => {
+    
+    noteServices.saveNote(noteData).then((response) => {
+      console.log(response.status);
       alert(response.data['response']);
       navigate('/');
-    });
+      console.log(response.data);
+    }).catch(console.log);
   };
 
   return (
@@ -50,8 +52,9 @@ const Note = () => {
           <div className="col-12">
             <textarea type="text"
               name="note"
+              value={state.name}
               onChange={handleChange}
-              rows="10"> 
+              rows="10">
             </textarea>
           </div>
             
@@ -64,4 +67,5 @@ const Note = () => {
   );
 };
 
-export default Note;
+
+export default FormNote;

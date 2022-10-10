@@ -7,6 +7,7 @@ class CardNote extends React.Component{
         
         const {labCase, note} = this.props; 
 
+
         return(
 
             <div className="card container-fluid w-75 col-12 my-4" id="cardNote">
@@ -21,11 +22,16 @@ class CardNote extends React.Component{
                         </div>
                         <div className = "col-4 ">
                             <div className = "col-12">
-                                <Link to={`/note/edit/${note.id}`} state={{labCase: labCase}}>
+                                <Link to={`/note/edit/${note.id}`} state={{labCase: labCase, note:note}}>
                                     Edit
                                 </Link>
+                                
                             </div>
-                            
+                            <div className = "col-12">
+                                <Link to={`/note/download`} state={{labCase: labCase, note:note}}>
+                                    Download JSON
+                                </Link>
+                            </div>
                         </div>
                      
                     </div>

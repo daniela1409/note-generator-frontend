@@ -1,19 +1,28 @@
 import React, {useEffect, useState} from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import noteServices from '../services/noteServices';
+import { useLocation } from 'react-router-dom';
 import CardNote from './CardNote';
+import { Link } from 'react-router-dom'
 
 
 function Notes() {
+
+    
 
     const location = useLocation();
     const labCase = location.state.labCase;
     const notes = labCase.note;
 
     return(
-        <div className='text-center justify-content-center align-items-center'>
-            <div>
+        <div className='text-center justify-content-center align-items-center row'>
+            
+            <div className='col-12'>
                 <h1>{labCase.name}</h1>
+
+                <div className = "col-12">
+                    <Link to={`/note/save`} state={{labCase: labCase}}>
+                        New note
+                    </Link>
+                </div>
                 {
                     notes.map((note) => {
                         return(
