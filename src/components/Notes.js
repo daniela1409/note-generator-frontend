@@ -1,28 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import noteServices from '../services/noteServices';
-import CardNote from './cardNote';
+import CardNote from './CardNote';
 
 
-function Notes(props) {
+function Notes() {
 
-    // const { id } = useParams();
-    // const { notes, setNotes } = useState([]);
     const location = useLocation();
+    const labCase = location.state.labCase;
+    const notes = labCase.note;
 
-
-    // useEffect(()=>{
-    //     noteServices.getLabCases(id)
-    //     .then((response) => {
-    //         setNotes(response.data);
-    //         console.log(notes);
-    //     });
-    // },[]);
-    console.log(location);
-        
     return(
-        <div></div>
+        <div className='text-center justify-content-center align-items-center'>
+            <div>
+                <h1>{labCase.name}</h1>
+                {
+                    notes.map((note) => {
+                        return(
+                            <CardNote
+                            labCase={labCase}
+                            note={note}
+                            key={note.id}
+                            />
+                        )
+                    })
+                }
+            </div>
             
+        </div>
     )
 }
 

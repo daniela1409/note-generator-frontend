@@ -1,48 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import noteServices from '../services/noteServices'
-import CardNote from './cardNote'
+import React, {useEffect, useState} from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import noteServices from '../services/noteServices';
+import CardNote from './CardNote';
 
 
-class Note extends React.Component{
+function Note() {
 
-    constructor(props){
-        super(props)
-        this.state = {
-            notes:[]
-        }
-        
-    }
-    componentDidMount(){
-        noteServices.getLabCases()
-        .then((response) => {
-            this.setState({notes: response.data});
-            console.log(response.data)
-        })
-    }
+    const location = useLocation();
+    const labCase = location.state.labCase;
 
-    render(){
-
-        return(
-
-            <div className="card container-fluid w-75 col-12 my-4" id="card">
-                 <div>
-                {
-                    this.state.notes.map((note) => {
-                        return(
-                            <CardNote
-                            note = {note.note}
-                            id = {note.id}
-                            key={note.id}
-                            />
-                        )
-                    })
-                }
-            </div>
+    return(
+        <div className='text-center justify-content-center align-items-center'>
+            <div>
+                
             </div>
             
-        )
-    }
+        </div>
+    )
 }
 
 export default Note;

@@ -19,15 +19,13 @@ class LabCasesContainer extends Component{
     }
     render(){
         return(
-            <div>
+            <div className='text-center justify-content-center align-items-center'>
                 {
                     this.state.labCases.map((labCase) => {
                         return(
                             <Card 
                             labCase = {labCase}
-                            name = {labCase.name}
-                            id = {labCase.id}
-                            key={labCase.id}
+                            key = {labCase.id}
                             />
                         )
                     })
