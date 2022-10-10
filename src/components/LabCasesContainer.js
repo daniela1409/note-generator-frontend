@@ -14,7 +14,6 @@ class LabCasesContainer extends Component{
         LabCaseServices.getLabCases()
         .then((response) => {
             this.setState({labCases: response.data})
-            console.log(this.state.labCases.length);
         })
     }
     render(){
