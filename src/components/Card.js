@@ -5,7 +5,9 @@ class Card extends React.Component{
 
     render(){
         
-        const {name, id, note} = this.props; 
+        // const {name, id, note} = this.props; 
+        const {labCase, name, id, note} = this.props; 
+        console.log(labCase);
 
         return(
 
@@ -18,7 +20,13 @@ class Card extends React.Component{
                             <label>Name : {name}</label>
                         </div>
                         <div className = "col-8 ">
-                            <Link  to={{pathname:`/note/${id}`, state:[{id: id, name:name, notes:note}]}} >
+                            {/* <Link  to={{pathname:`/note/${id}`, state:[{id: id, name:name, notes:note}]}} >
+                                Ver
+                            </Link> */}
+                            {/* <Link to={`/note/${id}`} state={{id: id, name:name, notes:note}}>
+                                Ver
+                            </Link> */}
+                            <Link to={`/note/${id}`} state={{labCase: labCase}}>
                                 Ver
                             </Link>
                         </div>

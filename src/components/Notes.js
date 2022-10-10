@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import noteServices from '../services/noteServices';
 import CardNote from './cardNote';
 
@@ -8,6 +8,7 @@ function Notes(props) {
 
     // const { id } = useParams();
     // const { notes, setNotes } = useState([]);
+    const location = useLocation();
 
 
     // useEffect(()=>{
@@ -17,7 +18,7 @@ function Notes(props) {
     //         console.log(notes);
     //     });
     // },[]);
-    console.log(props);
+    console.log(location);
         
     return(
         <div></div>

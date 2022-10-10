@@ -24,6 +24,7 @@ class LabCasesContainer extends Component{
                     this.state.labCases.map((labCase) => {
                         return(
                             <Card 
+                            labCase = {labCase}
                             name = {labCase.name}
                             id = {labCase.id}
                             key={labCase.id}
